@@ -3,9 +3,12 @@ import { useState } from 'react';
 
 export default function App() {
   const [city, setCity] = useState('')
+  const API_KEY = import.meta.env.VITE_WEATHER_KEY;
 
-  function handleSearch() {
-    console.log('searching for: ', city)
+async function handleSearch() {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+    const data = await response.json()
+    console.log(data)
   }
 
   return(
