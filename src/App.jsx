@@ -2,8 +2,7 @@ import { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import Forecast from './components/Forecast';
 import WeatherCard from './components/WeatherCard';
-
-const API_KEY = import.meta.env.VITE_WEATHER_KEY;
+import { fetchWeather, fetchForecast } from './api/weather';
 
 export default function App() {
   const [city, setCity] = useState('')
@@ -12,20 +11,15 @@ export default function App() {
   const [error, setError] = useState('')
   const [forecast, setForecast] = useState([])
 
-async function handleSearch() {
+  async function handleSearch() {
     setLoading(true)
     setError('')
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
-      if (!response.ok) throw new Error('Something went wrong')
-      const data = await response.json()
+      const data = await fetchWeather(city)
       setWeather(data)
-      const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
-      if (!forecastResponse.ok) throw new Error('Could not get forecast')
-      const forecastData = await forecastResponse.json()
+      const forecastData = await fetchForecast(city)
       const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
       setForecast(daily)
-      console.log(daily)
     } catch(error) {
       setError(error.message)
       setWeather(null)
