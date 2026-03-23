@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import Forecast from './components/Forecast';
+import WeatherCard from './components/WeatherCard';
 
 const API_KEY = import.meta.env.VITE_WEATHER_KEY;
 
@@ -39,13 +40,7 @@ async function handleSearch() {
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {weather && (
-        <div>
-          <h2>{weather.name}, {weather.sys.country}</h2>
-          <p>{Math.round(weather.main.temp)}°C</p>
-          <p>{weather.weather[0].description}</p>
-          <p>Humidity: {weather.main.humidity}%</p>
-          <p>Wind: {weather.wind.speed}m/s</p>
-        </div>
+        <WeatherCard weather={weather} />
       )}
       {forecast.length > 0 && (
         <Forecast forecast={forecast} />
