@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import SearchBar from './components/SearchBar';
+import Forecast from './components/Forecast';
 
 const API_KEY = import.meta.env.VITE_WEATHER_KEY;
 
@@ -7,6 +9,7 @@ export default function App() {
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [forecast, setForecast] = useState([])
 
 async function handleSearch() {
     setLoading(true)
@@ -16,6 +19,12 @@ async function handleSearch() {
       if (!response.ok) throw new Error('Something went wrong')
       const data = await response.json()
       setWeather(data)
+      const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
+      if (!forecastResponse.ok) throw new Error('Could not get forecast')
+      const forecastData = await forecastResponse.json()
+      const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
+      setForecast(daily)
+      console.log(daily)
     } catch(error) {
       setError(error.message)
       setWeather(null)
@@ -26,13 +35,7 @@ async function handleSearch() {
   return(
     <div>
       <h1>Weather App</h1>
-      <input
-        value={city}
-        onChange={e => setCity(e.target.value)}
-        onKeyDown={e => e.key === 'Enter' && handleSearch()}
-        placeholder='Enter a city...'
-      />
-      <button onClick={handleSearch}>Search</button>
+      <SearchBar city={city} setCity={setCity} handleSearch={handleSearch} />
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {weather && (
@@ -43,6 +46,9 @@ async function handleSearch() {
           <p>Humidity: {weather.main.humidity}%</p>
           <p>Wind: {weather.wind.speed}m/s</p>
         </div>
+      )}
+      {forecast.length > 0 && (
+        <Forecast forecast={forecast} />
       )}
     </div>
   )
