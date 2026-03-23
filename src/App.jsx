@@ -1,16 +1,26 @@
 import { useState } from 'react';
 
+const API_KEY = import.meta.env.VITE_WEATHER_KEY;
 
 export default function App() {
   const [city, setCity] = useState('')
   const [weather, setWeather] = useState(null)
-
-  const API_KEY = import.meta.env.VITE_WEATHER_KEY;
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
 async function handleSearch() {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
-    const data = await response.json()
-    setWeather(data)
+    setLoading(true)
+    setError('')
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+      if (!response.ok) throw new Error('Something went wrong')
+      const data = await response.json()
+      setWeather(data)
+    } catch(error) {
+      setError(error.message)
+      setWeather(null)
+    }
+    setLoading(false)
   }
 
   return(
@@ -23,6 +33,8 @@ async function handleSearch() {
         placeholder='Enter a city...'
       />
       <button onClick={handleSearch}>Search</button>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
       {weather && (
         <div>
           <h2>{weather.name}, {weather.sys.country}</h2>
