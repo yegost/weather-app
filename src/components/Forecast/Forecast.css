@@ -1,0 +1,56 @@
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.forecast-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.date {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a2e;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 8px;
+}
+
+.date span {
+    font-weight: 400;
+    color: #666;
+}
+
+.body-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.body-container img {
+    width: 48px;
+    height: 48px;
+    background: hsl(194, 72%, 76%);
+    border-radius: 6px;
+}
+
+.temp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px
+}
+
+.max-temp {
+    font-size: 19px;
+    font-weight: 700;
+    color:#1a1a2e;
+}
+
+.min-temp {
+    font-size: 17px;
+    color: #888;
+}
