@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import SearchBar from './components/SearchBar';
-import Forecast from './components/Forecast';
-import WeatherCard from './components/WeatherCard';
+import SearchBar from './components/SearchBar/SearchBar';
+import Forecast from './components/Forecast/Forecast';
+import WeatherCard from './components/WeatherCard/WeatherCard';
 import { fetchWeather, fetchForecast } from './api/weather';
 
 export default function App() {
@@ -29,8 +29,11 @@ export default function App() {
 
   return(
     <div>
-      <h1>Weather App</h1>
-      <SearchBar city={city} setCity={setCity} handleSearch={handleSearch} />
+      <div className="top-bar">
+        <h1>Weather App</h1>
+        <SearchBar city={city} setCity={setCity} handleSearch={handleSearch} />
+      </div>
+
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {weather && (

@@ -1,0 +1,22 @@
+.search-bar {
+    display: flex;
+    gap: 8px;
+}
+
+.search-bar input {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+    outline: none;
+    width: 200px;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 0 2px #a0b4ff;
+}
+
+.search-bar button:hover {
+    background: #3a5a8a;
+}
