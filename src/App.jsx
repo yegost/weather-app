@@ -19,6 +19,7 @@ export default function App() {
       setWeather(data)
       const forecastData = await fetchForecast(city)
       const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
+      console.log(daily)
       setForecast(daily)
     } catch(error) {
       setError(error.message)
