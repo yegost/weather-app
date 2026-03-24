@@ -10,6 +10,7 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [forecast, setForecast] = useState([])
+  const [unit, setUnit] = useState('C')
 
   async function handleSearch() {
     setLoading(true)
@@ -19,7 +20,6 @@ export default function App() {
       setWeather(data)
       const forecastData = await fetchForecast(city)
       const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
-      console.log(daily)
       setForecast(daily)
     } catch(error) {
       setError(error.message)
@@ -38,10 +38,10 @@ export default function App() {
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {weather && (
-        <WeatherCard weather={weather} />
+        <WeatherCard weather={weather} unit={unit} setUnit={setUnit} />
       )}
       {forecast.length > 0 && (
-        <Forecast forecast={forecast} />
+        <Forecast forecast={forecast} unit={unit} />
       )}
     </div>
   )
