@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 export default function WeatherCard({ weather }) {
     return(
         <div>
@@ -8,4 +10,8 @@ export default function WeatherCard({ weather }) {
             <p>Wind: {weather.wind.speed}m/s</p>
         </div>
     )
+}
+
+WeatherCard.propTypes = {
+    weather: PropTypes.object.isRequired
 }

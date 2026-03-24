@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 export default function Forecast({ forecast }) {
     return(
         <div>
@@ -12,4 +14,8 @@ export default function Forecast({ forecast }) {
             ))}
         </div>
     )
+}
+
+Forecast.propTypes = {
+    forecast: PropTypes.array.isRequired
 }
