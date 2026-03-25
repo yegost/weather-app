@@ -4,8 +4,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --text-primary: #ffffff;
+    --text-secondary: rgba(224, 224, 224, 0.911);
+    --text-muted: rgba(255, 255, 255, 0.623);
+    --card-bg: rgba(255, 255, 255, 0.2);
+    --card-border: rgba(255, 255, 255, 0.3);
+    --blur: blur(10px);
+}
+
 body {
-    font-family: sans-serif;
+    font-family: "Inter", sans-serif;
     background: #f0f4ff;
     min-height: 100vh;
     display: flex;

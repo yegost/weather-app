@@ -5,7 +5,7 @@
 }
 
 .forecastCard {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
@@ -15,7 +15,7 @@
 .date {
     font-size: 18px;
     font-weight: 700;
-    color: #1a1a2e;
+    color: var(--text-primary);
     display: flex;
     justify-content: space-around;
     margin-bottom: 8px;
@@ -23,7 +23,7 @@
 
 .date span {
     font-weight: 400;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .bodyContainer {
@@ -49,10 +49,10 @@
 .maxTemp {
     font-size: 19px;
     font-weight: 700;
-    color:#1a1a2e;
+    color: var(--text-primary);
 }
 
 .minTemp {
     font-size: 17px;
-    color: #888;
+    color: var(--text-secondary);
 }
