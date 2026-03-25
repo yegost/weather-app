@@ -1,17 +1,17 @@
-import './Forecast.css'
+import styles from './Forecast.module.css'
 import PropTypes from "prop-types"
 
 export default function Forecast({ forecast }) {
     return(
-        <div className="forecast">
+        <div className={styles.forecast}>
             {forecast.map(item => (
-                <div key={item.dt_txt} className="forecast-card">
-                    <p className="date">{item.dt_txt.slice(8, 10)}<span>{new Date(item.dt_txt).toLocaleDateString('en-GB', { weekday: 'short'})}</span></p>
-                    <div className="body-container">
+                <div key={item.dt_txt} className={styles.forecastCard}>
+                    <p className={styles.date}>{item.dt_txt.slice(8, 10)}<span>{new Date(item.dt_txt).toLocaleDateString('en-GB', { weekday: 'short'})}</span></p>
+                    <div className={styles.bodyContainer}>
                         <img src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt={item.weather[0].description} />
-                        <div className="temp-container">
-                            <p className="max-temp">{Math.round(item.main.temp_max)}°</p>
-                            <p className="min-temp">{Math.round(item.main.temp_min)}°</p>
+                        <div className={styles.tempContainer}>
+                            <p className={styles.maxTemp}>{Math.round(item.main.temp_max)}°</p>
+                            <p className={styles.minTemp}>{Math.round(item.main.temp_min)}°</p>
                         </div>
                     </div>
                 </div>

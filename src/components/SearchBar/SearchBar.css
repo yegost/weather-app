@@ -14,7 +14,7 @@
 }
 
 .search-bar input:focus {
-    box-shadow: 0 0 0 2px #a0b4ff;
+    box-shadow: 0 0 0 2px hsl(194, 72%, 76%);
 }
 
 .search-bar button:hover {

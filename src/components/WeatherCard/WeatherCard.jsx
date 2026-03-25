@@ -1,19 +1,22 @@
-import './WeatherCard.css'
+import styles from './WeatherCard.module.css'
 import PropTypes from "prop-types"
 
 export default function WeatherCard({ weather, unit, setUnit }) {
     const toF = c => Math.round(c * 9/5 + 32)
 
     return(
-        <div className="weather-card">
+        <div className={styles.weatherCard}>
             <h2>{weather.name}, {weather.sys.country}</h2>
-            <div className="temp-change">
-                <p className="temp">{unit === "C" ? Math.round(weather.main.temp) : toF(weather.main.temp)}</p>
-                <p className="temp-unit">°{unit}</p>
-                <button onClick={() => setUnit(unit === "C" ? "F" : "C")}>{unit === "C" ? "F" : "C"}</button>
+            <div className={styles.tempContainer}>
+                <p className={styles.temp}>{unit === "C" ? Math.round(weather.main.temp) : toF(weather.main.temp)}</p>
+                <div className={styles.tempChange}>
+                    <p className={styles.tempUnit}>°{unit}</p>
+                    <hr />
+                    <button onClick={() => setUnit(unit === "C" ? "F" : "C")}>{unit === "C" ? "F" : "C"}</button>
+                </div>
             </div>
-            <p className="description">{weather.weather[0].description}</p>
-            <div className="details">
+            <p className={styles.description}>{weather.weather[0].description}</p>
+            <div className={styles.details}>
                 <p>Humidity: {weather.main.humidity}%</p>
                 <p>Wind: {weather.wind.speed}m/s</p>
             </div>

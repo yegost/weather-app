@@ -1,0 +1,73 @@
+.weatherCard {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.weatherCard h2 {
+    font-size: 26px;
+    color: #666;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.temp {
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1;
+    color: #1a1a2e;
+}
+
+.tempContainer {
+    gap: 5px;
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.tempChange, .tempChange button {
+    font-size: 30px;
+    font-weight: 700;
+    gap: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.tempChange hr {
+    align-self: center;
+    height: 25px;
+}
+
+.tempChange button {
+    border: none;
+    background: none;
+}
+
+.tempChange button:hover {
+    cursor: pointer;
+    scale: 110%;
+}
+
+.tempChange button:active {
+    scale: 95%;
+}
+
+.description {
+    font-size: 20px;
+    font-weight: 700;
+    color: #666;
+    text-transform: capitalize;
+    margin-top: 8px;
+}
+
+.details {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.details p {
+    font-size: 14px;
+    color: #666;
+}
