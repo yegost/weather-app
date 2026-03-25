@@ -20,15 +20,24 @@ body {
 
 .top-bar {
     display: flex;
+    flex-wrap:wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
 }
-
 
 .top-bar h1 {
     background: linear-gradient(0deg, #1a1a2e, hsl(194, 72%, 76%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+@media (max-width: 550px) {
+    h1 {
+        display: none;
+    }
+    .top-bar {
+        justify-content: center;
+    }
 }

@@ -11,6 +11,7 @@
     font-size: 15px;
     outline: none;
     width: 200px;
+    flex: 1;
 }
 
 .search-bar input:focus {
@@ -19,4 +20,10 @@
 
 .search-bar button:hover {
     background: #3a5a8a;
+}
+
+@media (max-width: 550px) {
+    .search-bar {
+        width: 100%;
+    }
 }
