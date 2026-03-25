@@ -28,18 +28,21 @@ body {
 }
 
 .top-bar {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 1rem;
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
 }
 
 .top-bar h1 {
-    background: linear-gradient(0deg, #1a1a2e, hsl(194, 72%, 76%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .clear-cold {

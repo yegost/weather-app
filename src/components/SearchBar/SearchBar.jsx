@@ -1,9 +1,9 @@
-import './SearchBar.css'
+import styles from './SearchBar.module.css'
 import PropTypes from "prop-types"
 
 export default function SearchBar({ city, setCity, handleSearch }) {
     return(
-      <div className="search-bar">
+      <div className={styles.searchBar}>
         <input
             value={city}
             onChange={e => setCity(e.target.value)}
