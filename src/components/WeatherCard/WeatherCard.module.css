@@ -1,5 +1,7 @@
 .weatherCard {
-    background: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 16px;
     padding: 2rem;
     margin-bottom: 1rem;
@@ -36,6 +38,7 @@
 
 .tempChange hr {
     align-self: center;
+    border: 1px solid #666;
     height: 25px;
 }
 
@@ -69,5 +72,5 @@
 
 .details p {
     font-size: 14px;
-    color: #666;
+    color: #5c5c5c;
 }

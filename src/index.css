@@ -33,6 +33,114 @@ body {
     background-clip: text;
 }
 
+.clear-cold {
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+}
+
+.clear-mild {
+    background: linear-gradient(135deg, #87ceeb, #4a9eda);
+}
+
+.clear-warm {
+    background: linear-gradient(135deg, #f7b733, #fc4a1a);
+}
+
+.clouds-cold {
+    background: linear-gradient(135deg, #757f9a, #d7dde8);
+}
+
+.clouds-mild {
+    background: linear-gradient(135deg, #dac29e, #7f8c8d);
+}
+
+.clouds-warm {
+    background: linear-gradient(135deg, #d8a14e, #e9e4f0);
+}
+
+.rain-cold {
+    background: linear-gradient(135deg, #283048, #859398);
+}
+
+.rain-mild {
+    background: linear-gradient(135deg, #373b44, #4286f4);
+}
+
+.rain-warm {
+    background: linear-gradient(135deg, #4da0b0, #d39d38);
+}
+
+.drizzle-cold {
+    background: linear-gradient(135deg, #614385, #516395);
+}
+
+.drizzle-mild {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+.drizzle-warm {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+}
+
+.thunderstorm-cold {
+    background: linear-gradient(135deg, #0f0c29, #302b63);
+}
+
+.thunderstorm-mild {
+    background: linear-gradient(135deg, #16213e, #533483);
+}
+
+.thunderstorm-warm {
+    background: linear-gradient(135deg, #373b44, #9b59b6);
+}
+
+.snow-cold {
+    background: linear-gradient(135deg, #e0eafc, #a0b4ff);
+}
+
+.snow-mild {
+    background: linear-gradient(135deg, #e6dada, #274046);
+}
+
+.mist-cold {
+    background: linear-gradient(135deg, #606c88, #3f4c6b);
+}
+
+.mist-mild {
+    background: linear-gradient(135deg, #928dab, #1f1c2c);
+}
+
+.mist-warm {
+    background: linear-gradient(135deg, #b79891, #94716b);
+}
+
+.smoke-warm {
+    background: linear-gradient(135deg, #d1a6a6, #8e9eab);
+}
+
+.smoke-mild {
+    background: linear-gradient(135deg, #aca0a0, #6b7a8d);
+}
+
+.smoke-cold {
+    background: linear-gradient(135deg, #757575, #4a4a4a);
+}
+
+.haze-warm {
+    background: linear-gradient(135deg, #f5af19, #c8a96e);
+}
+
+.haze-mild {
+    background: linear-gradient(135deg, #d4c5a9, #9e8f7a);
+}
+
+.haze-cold {
+    background: linear-gradient(135deg, #a09070, #6b5f4f);
+}
+
+.default {
+    background: linear-gradient(135deg, #f0f4ff, #a0b4ff);
+}
+
 @media (max-width: 550px) {
     h1 {
         display: none;

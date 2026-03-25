@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import Forecast from './components/Forecast/Forecast';
 import WeatherCard from './components/WeatherCard/WeatherCard';
@@ -22,11 +22,26 @@ export default function App() {
       const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
       setForecast(daily)
     } catch(error) {
-      setError(error.message)
+      setError(`Couldn't find results for ${city}.`)
       setWeather(null)
+      setForecast([])
     }
     setLoading(false)
   }
+
+  function getBackground(condition, temp) {
+    const c = condition.toLowerCase()
+    const t = temp < 10 ? 'cold' : temp < 20 ? 'mild' : 'warm'
+    return `${c}-${t}`
+  }
+
+  useEffect(() => {
+      console.log(weather?.weather[0].main)
+      const condition = weather
+        ? getBackground(weather.weather[0].main, weather.main.temp)
+        : 'default'
+      document.body.className = condition
+  }, [weather])
 
   return(
     <div>
