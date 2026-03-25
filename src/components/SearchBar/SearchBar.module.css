@@ -12,7 +12,7 @@
     font-weight: 500;
     font-family: "Inter", sans-serif;
     outline: none;
-    width: 200px;
+    min-width: 0;
     color: var(--text-primary);
     flex: 1;
     transition: border-color 0.2s ease;
@@ -26,11 +26,7 @@
     border-color: rgba(255, 255, 255, 0.6);
 }
 
-.searchBar button:hover {
-    background: #3a5a8a;
-}
-
-@media (max-width: 550px) {
+@media (max-width: 555px) {
     .searchBar {
         width: 100%;
     }

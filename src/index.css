@@ -153,7 +153,7 @@ body {
     background: linear-gradient(135deg, #f0f4ff, #a0b4ff);
 }
 
-@media (max-width: 550px) {
+@media (max-width: 555px) {
     h1 {
         display: none;
     }

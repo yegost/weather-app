@@ -21,6 +21,7 @@ export default function App() {
       const forecastData = await fetchForecast(city)
       const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
       setForecast(daily)
+      setCity('')
     } catch(error) {
       setError(`Couldn't find results for ${city}.`)
       setWeather(null)
@@ -32,7 +33,8 @@ export default function App() {
   function getBackground(condition, temp) {
     const c = condition.toLowerCase()
     const t = temp < 10 ? 'cold' : temp < 20 ? 'mild' : 'warm'
-    return `${c}-${t}`
+    const known = ['clear', 'clouds', 'rain', 'drizzle', 'thunderstorm', 'snow', 'mist', 'smoke', 'haze']
+    return known.includes(c) ? `${c}-${t}` : "default"
   }
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function App() {
     <div>
       <div className="top-bar">
         <h1>Weather App</h1>
-        <SearchBar city={city} setCity={setCity} handleSearch={handleSearch} />
+        <SearchBar city={city} setCity={setCity} handleSearch={handleSearch} loading={loading} />
       </div>
 
       {loading && <p>Loading...</p>}
