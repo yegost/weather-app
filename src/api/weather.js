@@ -1,4 +1,4 @@
-const API_KEY = import.meta.env.VITE_WEATHER_KEY;
+import { API_KEY } from "./config"
 
 export async function fetchWeather(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)

@@ -3,6 +3,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Forecast from './components/Forecast/Forecast';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import { fetchWeather, fetchForecast } from './api/weather';
+import { API_KEY } from './api/config';
 
 export default function App() {
   const [city, setCity] = useState('')
@@ -11,6 +12,7 @@ export default function App() {
   const [error, setError] = useState('')
   const [forecast, setForecast] = useState([])
   const [unit, setUnit] = useState('C')
+  const [suggestions, setSuggestions] = useState([])
 
   async function handleSearch() {
     setLoading(true)
@@ -45,11 +47,27 @@ export default function App() {
       document.body.className = condition
   }, [weather])
 
+  useEffect(() => {
+    if (city.length < 3) {
+      setSuggestions([])
+      return
+    }
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`)
+        .then(res => res.json())
+        .then(data => setSuggestions(data))
+  }, [city])
+
   return(
     <div>
       <div className="top-bar">
         <h1>Weather App</h1>
-        <SearchBar city={city} setCity={setCity} handleSearch={handleSearch} loading={loading} />
+        <SearchBar city={city} 
+          setCity={setCity} 
+          handleSearch={handleSearch} 
+          loading={loading} 
+          suggestions={suggestions} 
+          setSuggestions={setSuggestions} 
+        />
       </div>
 
       {loading && <p>Loading...</p>}
