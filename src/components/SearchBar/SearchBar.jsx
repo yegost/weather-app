@@ -16,7 +16,6 @@ export default function SearchBar({ city, setCity, handleSearch, loading, sugges
               {suggestions.map(s => (
                   <li key={`${s.lat}-${s.lon}`} onClick={() => {
                       setIsSelecting(true)
-                      setCity(s.name)
                       setSuggestions([])
                       handleSearch(s.name)
                       setTimeout(() => setIsSelecting(false), 500)
@@ -33,5 +32,9 @@ export default function SearchBar({ city, setCity, handleSearch, loading, sugges
 SearchBar.propTypes = {
   city: PropTypes.string.isRequired,
   setCity: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  suggestions: PropTypes.array.isRequired,
+  setSuggestions: PropTypes.func.isRequired,
+  setIsSelecting: PropTypes.func.isRequired
 }

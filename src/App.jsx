@@ -18,15 +18,16 @@ export default function App() {
   async function handleSearch(searchCity = city) {
     setLoading(true)
     setError('')
+    setSuggestions([])
     try {
-      const data = await fetchWeather(city)
+      const data = await fetchWeather(searchCity)
       setWeather(data)
-      const forecastData = await fetchForecast(city)
+      const forecastData = await fetchForecast(searchCity)
       const daily = forecastData.list.filter(item => item.dt_txt.includes('12:00:00'))
       setForecast(daily)
       setCity('')
     } catch(error) {
-      setError(`Couldn't find results for ${city}.`)
+      setError(`Couldn't find results for ${searchCity}.`)
       setWeather(null)
       setForecast([])
     }
@@ -41,7 +42,6 @@ export default function App() {
   }
 
   useEffect(() => {
-      console.log(weather?.weather[0].main)
       const condition = weather
         ? getBackground(weather.weather[0].main, weather.main.temp)
         : 'default'
@@ -49,7 +49,7 @@ export default function App() {
   }, [weather])
 
   useEffect(() => {
-    if (isSelecting) {
+    if (isSelecting || city.length < 1) {
       setSuggestions([])
       return
     }
@@ -59,7 +59,7 @@ export default function App() {
       .then(data => setSuggestions(data))
     }, 300)
     return () => clearTimeout(timer)
-  }, [city])
+  }, [city, isSelecting])
 
   return(
     <div>
