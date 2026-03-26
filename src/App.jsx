@@ -49,7 +49,7 @@ export default function App() {
   }, [weather])
 
   useEffect(() => {
-    if (isSelecting || city.length < 1) {
+    if (isSelecting || city.length < 2) {
       setSuggestions([])
       return
     }
