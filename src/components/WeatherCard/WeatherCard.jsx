@@ -6,22 +6,24 @@ export default function WeatherCard({ weather, unit, setUnit }) {
 
     return(
         <div className={styles.weatherCard}>
-            <h2>{weather.name}, {weather.sys.country}</h2>
-            <div className={styles.tempContainer}>
-                <p className={styles.temp}>{unit === "C" 
-                    ? Math.round(weather.main.temp) 
-                    : toF(weather.main.temp)}
-                </p>
-                <div className={styles.tempChange}>
-                    <p className={styles.tempUnit}>°{unit}</p>
-                    <hr />
-                    <button onClick={() => setUnit(unit === "C" ? "F" : "C")}>
-                        {unit === "C" ? "F" : "C"}
-                    </button>
+            <div className={styles.left}>
+                <h2>{weather.name}, {weather.sys.country}</h2>
+                <div className={styles.tempContainer}>
+                    <p className={styles.temp}>{unit === "C" 
+                        ? Math.round(weather.main.temp) 
+                        : toF(weather.main.temp)}
+                    </p>
+                    <div className={styles.tempChange}>
+                        <p className={styles.tempUnit}>°{unit}</p>
+                        <hr />
+                        <button onClick={() => setUnit(unit === "C" ? "F" : "C")}>
+                            {unit === "C" ? "F" : "C"}
+                        </button>
+                    </div>
                 </div>
+                <p className={styles.description}>{weather.weather[0].description}</p>
             </div>
-            <p className={styles.description}>{weather.weather[0].description}</p>
-            <div className={styles.details}>
+            <div className={styles.right}>
                 <p>Humidity: {weather.main.humidity}%</p>
                 <p>Wind: {weather.wind.speed}m/s</p>
             </div>
