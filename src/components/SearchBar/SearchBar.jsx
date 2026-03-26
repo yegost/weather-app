@@ -1,7 +1,7 @@
 import styles from './SearchBar.module.css'
 import PropTypes from "prop-types"
 
-export default function SearchBar({ city, setCity, handleSearch, loading, suggestions, setSuggestions }) {
+export default function SearchBar({ city, setCity, handleSearch, loading, suggestions, setSuggestions, setIsSelecting }) {
   return(
     <div className={styles.searchBar} style={{ position: 'relative' }}>
       <input
@@ -15,9 +15,11 @@ export default function SearchBar({ city, setCity, handleSearch, loading, sugges
           <ul className={styles.dropdown}>
               {suggestions.map(s => (
                   <li key={`${s.lat}-${s.lon}`} onClick={() => {
+                      setIsSelecting(true)
                       setCity(s.name)
                       setSuggestions([])
-                      handleSearch()
+                      handleSearch(s.name)
+                      setTimeout(() => setIsSelecting(false), 500)
                   }}>
                       {s.name}, {s.country}
                   </li>

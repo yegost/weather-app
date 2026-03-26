@@ -13,8 +13,9 @@ export default function App() {
   const [forecast, setForecast] = useState([])
   const [unit, setUnit] = useState('C')
   const [suggestions, setSuggestions] = useState([])
+  const [isSelecting, setIsSelecting] = useState(false)
 
-  async function handleSearch() {
+  async function handleSearch(searchCity = city) {
     setLoading(true)
     setError('')
     try {
@@ -48,13 +49,16 @@ export default function App() {
   }, [weather])
 
   useEffect(() => {
-    if (city.length < 3) {
+    if (isSelecting) {
       setSuggestions([])
       return
     }
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`)
-        .then(res => res.json())
-        .then(data => setSuggestions(data))
+    const timer = setTimeout(() => {
+      fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`)
+      .then(res => res.json())
+      .then(data => setSuggestions(data))
+    }, 300)
+    return () => clearTimeout(timer)
   }, [city])
 
   return(
@@ -67,6 +71,7 @@ export default function App() {
           loading={loading} 
           suggestions={suggestions} 
           setSuggestions={setSuggestions} 
+          setIsSelecting={setIsSelecting}
         />
       </div>
 
