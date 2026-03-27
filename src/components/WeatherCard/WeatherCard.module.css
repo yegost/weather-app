@@ -106,3 +106,10 @@
     font-size: 14px;
     color: var(--text-muted);
 }
+
+.divider {
+    width: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 1rem 0;
+}
