@@ -3,6 +3,15 @@ import PropTypes from "prop-types"
 
 export default function WeatherCard({ weather, unit, setUnit }) {
     const toF = c => Math.round(c * 9/5 + 32)
+
+    const formatDate = (unix) => {
+        return new Date(unix * 1000).toLocaleDateString('en-GB', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long'
+        })
+    }
+
     const formatTime = (unix) => {
         return new Date(unix * 1000).toLocaleTimeString('en-US', { 
             hour: '2-digit', 
@@ -32,6 +41,8 @@ export default function WeatherCard({ weather, unit, setUnit }) {
                 <p className={styles.description}>{weather.weather[0].description}</p>
             </div>
             <div className={styles.right}>
+                <p className={styles.date}>🗓️ {formatDate(weather.sys.sunrise)}</p>
+                <div className={styles.divider} />
                 <p>🌅 Sunrise: {formatTime(weather.sys.sunrise)}</p>
                 <p>🌇 Sunset: {formatTime(weather.sys.sunset)}</p>
                 <div className={styles.divider} />
