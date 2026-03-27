@@ -1,6 +1,6 @@
 # Weather App
 
-A React weather app built with Vite and React that shows current weather and a 5-day forecast for any city.
+A React weather app built with Vite that shows current weather and a 5-day forecast for any city.
 
 ## Features
 - Search cities with autocomplete dropdown
@@ -14,3 +14,20 @@ A React weather app built with Vite and React that shows current weather and a 5
 - Vite
 - OpenWeatherMap API
 - CSS Modules
+
+## Getting Started
+
+1. Clone the repo
+   git clone https://github.com/yegost/weather-app.git
+
+2. Install dependencies
+   `npm install`
+
+3. Create a `.env` file in the root and add your API key
+   VITE_WEATHER_KEY=your_api_key_here
+
+4. Start the dev server
+   `npm run dev`
+
+## API Key
+Get a free API key at [openweathermap.org](https://openweathermap.org)
