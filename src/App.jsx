@@ -62,27 +62,26 @@ export default function App() {
   }, [city, isSelecting])
 
   return(
-    <div>
-      <div className="top-bar">
-        <h1>Weather App</h1>
-        <SearchBar city={city} 
-          setCity={setCity} 
-          handleSearch={handleSearch} 
-          loading={loading} 
-          suggestions={suggestions} 
-          setSuggestions={setSuggestions} 
-          setIsSelecting={setIsSelecting}
-        />
+      <div className="container">
+          <div className="top-bar">
+              <h1>Weather App</h1>
+              <SearchBar city={city} 
+                  setCity={setCity} 
+                  handleSearch={handleSearch} 
+                  loading={loading} 
+                  suggestions={suggestions} 
+                  setSuggestions={setSuggestions} 
+                  setIsSelecting={setIsSelecting}
+              />
+          </div>
+          {loading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
+          {weather && (
+              <WeatherCard weather={weather} unit={unit} setUnit={setUnit} />
+          )}
+          {forecast.length > 0 && (
+              <Forecast forecast={forecast} unit={unit} />
+          )}
       </div>
-
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {weather && (
-        <WeatherCard weather={weather} unit={unit} setUnit={setUnit} />
-      )}
-      {forecast.length > 0 && (
-        <Forecast forecast={forecast} unit={unit} />
-      )}
-    </div>
   )
 }

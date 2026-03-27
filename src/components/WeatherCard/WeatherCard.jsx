@@ -24,8 +24,11 @@ export default function WeatherCard({ weather, unit, setUnit }) {
                 <p className={styles.description}>{weather.weather[0].description}</p>
             </div>
             <div className={styles.right}>
-                <p>Humidity: {weather.main.humidity}%</p>
-                <p>Wind: {weather.wind.speed}m/s</p>
+                <p>💧 Humidity: {weather.main.humidity}%</p>
+                <p>💨 Wind: {weather.wind.speed}m/s</p>
+                <p>🌡️ Feels like {unit === "C" 
+                    ? Math.round(weather.main.feels_like) 
+                    : toF(weather.main.feels_like)}°</p>
             </div>
         </div>
     )
