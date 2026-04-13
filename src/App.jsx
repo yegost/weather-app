@@ -3,7 +3,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Forecast from './components/Forecast/Forecast';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import { fetchWeather, fetchForecast } from './api/weather';
-import { API_KEY } from './api/config';
+import { useSuggestions } from './hooks/useSuggestions'
 
 export default function App() {
   const [city, setCity] = useState('')
@@ -12,8 +12,8 @@ export default function App() {
   const [error, setError] = useState('')
   const [forecast, setForecast] = useState([])
   const [unit, setUnit] = useState('C')
-  const [suggestions, setSuggestions] = useState([])
   const [isSelecting, setIsSelecting] = useState(false)
+  const { suggestions, setSuggestions } = useSuggestions(city, isSelecting)
 
   async function handleSearch(searchCity = city) {
     setLoading(true)
@@ -47,19 +47,6 @@ export default function App() {
         : 'default'
       document.body.className = condition
   }, [weather])
-
-  useEffect(() => {
-    if (isSelecting || city.length < 2) {
-      setSuggestions([])
-      return
-    }
-    const timer = setTimeout(() => {
-      fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`)
-      .then(res => res.json())
-      .then(data => setSuggestions(data))
-    }, 300)
-    return () => clearTimeout(timer)
-  }, [city, isSelecting])
 
   return(
       <div className="container">
