@@ -2,6 +2,14 @@
 
 A React weather app built with Vite that shows current weather and a 5-day forecast for any city.
 
+![image alt](https://github.com/yegost/weather-app/blob/2f01be570662fb0226bb1bdcebdfd585b84e1b86/Screenshot%202026-04-13%20040441.png)
+
+
+## 🌐 Live Demo
+
+👉 https://weather-app-phi-ten-60.vercel.app/
+
+
 ## Features
 - Search cities with autocomplete dropdown
 - Current temperature, description, humidity, wind, feels like, sunrise and sunset
